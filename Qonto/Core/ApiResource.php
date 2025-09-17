@@ -24,11 +24,11 @@ abstract class ApiResource
 
     /**
      * @param string $path
-     * @param array $queryParameters
+     * @param array<string, mixed> $queryParameters
      * 
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function fetch($path, $queryParameters = [])
+    protected function fetch(string $path, array $queryParameters = []): array
     {
         $url = $this->api->baseUrl . $path;
         $response = $this->api->client->getRequest($url, $queryParameters);
@@ -38,11 +38,11 @@ abstract class ApiResource
 
     /**
      * @param string $path
-     * @param array $bodyParameters
+     * @param array<string, mixed> $bodyParameters
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function post($path, $bodyParameters = []): array
+    protected function post(string $path, array $bodyParameters = []): array
     {
         $url = $this->api->baseUrl . $path;
         $response = $this->api->client->getRequestPOST($url, $bodyParameters);
@@ -51,12 +51,12 @@ abstract class ApiResource
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @param string $class
      * 
      * @return mixed
      */
-    protected function denormalize($data, $class)
+    protected function denormalize(array $data, string $class): mixed
     {
         return $this->api->serializer->denormalize($data, $class);
     }

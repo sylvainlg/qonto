@@ -14,54 +14,54 @@ use neyric\Qonto\ApiResource\ApiTransactions;
 
 class QontoApi
 {
-    public $login;
+    public string $login;
 
-    public $secretKey;
+    public string $secretKey;
 
-    public $baseUrl;
+    public string $baseUrl;
 
     /**
      * @var ApiClient
      */
-    public $client;
+    public ApiClient $client;
 
     /**
      * @var ApiSerializer
      */
-    public $serializer;
+    public ApiSerializer $serializer;
 
     /**
      * @var ApiAttachments
      */
-    public $Attachments;
+    public ApiAttachments $Attachments;
 
     /**
      * @var ApiLabels
      */
-    public $Labels;
+    public ApiLabels $Labels;
 
     /**
      * @var ApiMemberships
      */
-    public $Memberships;
+    public ApiMemberships $Memberships;
 
     /**
      * @var ApiOrganizations
      */
-    public $Organizations;
+    public ApiOrganizations $Organizations;
 
     /**
      * @var ApiTransactions
      */
-    public $Transactions;
+    public ApiTransactions $Transactions;
 
     /**
      * @var ApiExternalTransfers
      */
-    public $ExternalTransers;
+    public ApiExternalTransfers $ExternalTransers;
 
 
-    public function __construct($login, $secretKey, $baseUrl = 'https://thirdparty.qonto.com/v2') {
+    public function __construct(string $login, string $secretKey, string $baseUrl = 'https://thirdparty.qonto.com/v2') {
         $this->login  = $login;
         $this->secretKey = $secretKey;
         $this->baseUrl = $baseUrl;

@@ -58,9 +58,9 @@ class ExternalTransferBuilder
      * Amount for the external transfer (max: 30000)
      * @url https://www.w3.org/TR/payment-request/#dfn-valid-decimal-monetary-value
      *
-     * @var string
+     * @var float
      */
-    protected $amount;
+    protected float $amount;
 
     /**
      * @return ExternalTransferBuilder
@@ -132,7 +132,7 @@ class ExternalTransferBuilder
     {
         if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $scheduled_date)) throw new \Exception("Scheduled date must be in YYYY-MM-DD format !");
 
-        $this->scheduled_date = $date;
+        $this->scheduled_date = $scheduled_date;
 
         return $this;
     }
@@ -155,6 +155,9 @@ class ExternalTransferBuilder
 
     // -----------------------------
 
+    /**
+     * @return array<string, mixed>
+     */
     public function build(): array
     {
         return [

@@ -13,7 +13,10 @@ use neyric\Qonto\Utils\DateUtils;
 class TransactionFilterBuilder
 {
 
-    public $filters = [
+    /**
+     * @var array<string, mixed>
+     */
+    public array $filters = [
         "with_attachments" => false
     ];
 
@@ -155,7 +158,7 @@ class TransactionFilterBuilder
     /**
      * Get the filters array.
      *
-     * @return array Filters array
+     * @return array<string, mixed> Filters array
      */
     public function getFiltersArray(): array
     {

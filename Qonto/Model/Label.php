@@ -4,9 +4,9 @@ namespace neyric\Qonto\Model;
 
 class Label
 {
-    public $id;
+    public string $id;
 
-    public $name;
+    public string $name;
 
-    public $parent_id;
+    public ?string $parent_id;
 }

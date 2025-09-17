@@ -14,7 +14,7 @@ set_time_limit(0);
 class ApiAttachementsTest extends TestCase
 {
 
-    function test_QontoApiOrganizations()
+    function test_QontoApiOrganizations(): void
     {
         $qonto = new QontoApi('login', 'secretKey');
 

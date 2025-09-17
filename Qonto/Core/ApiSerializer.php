@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 class ApiSerializer
 {
 
-    private $_serializer;
+    private Serializer $_serializer;
 
     public function __construct()
     {
@@ -27,7 +27,7 @@ class ApiSerializer
         ], []);
     }
 
-    public function denormalize($data, $class)
+    public function denormalize(mixed $data, string $class): mixed
     {
         return $this->_serializer->denormalize($data, $class);
     }

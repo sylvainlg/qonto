@@ -35,9 +35,9 @@ class Transaction
     /**
      * List of attachments' id
      *
-     * @var array
+     * @var string[]
      */
-    public $attachment_ids;
+    public array $attachment_ids;
 
     /**
      * Amount in the local_currency
@@ -162,9 +162,9 @@ class Transaction
     /**
      * List of labels' id
      * 
-     * @var array|null
+     * @var string[]|null
      */
-    public $label_ids;
+    public ?array $label_ids;
 
     /**
      * Indicates if the transaction's attachment was lost (default: false)

@@ -4,19 +4,19 @@ namespace neyric\Qonto\Model;
 
 class BankAccount
 {
-    public $slug;
+    public string $slug;
 
-    public $iban;
+    public string $iban;
 
-    public $bic;
+    public string $bic;
 
-    public $currency;
+    public string $currency;
 
-    public $balance;
+    public float $balance;
 
-    public $balance_cents;
+    public int $balance_cents;
 
-    public $authorized_balance;
+    public float $authorized_balance;
 
-    public $authorized_balance_cents;
+    public int $authorized_balance_cents;
 }

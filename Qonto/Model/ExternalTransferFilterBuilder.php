@@ -13,7 +13,10 @@ use neyric\Qonto\Utils\DateUtils;
 class ExternalTransferFilterBuilder
 {
 
-    public $filters = [
+    /**
+     * @var array<string, mixed>
+     */
+    public array $filters = [
         "with_attachments" => false
     ];
 
@@ -44,6 +47,7 @@ class ExternalTransferFilterBuilder
 
     /**
      * Add attachment to the transactions list
+     * @param string[] $beneficacy_ids
      */
     public function beneficary(array $beneficacy_ids): ExternalTransferFilterBuilder
     {
@@ -131,7 +135,7 @@ class ExternalTransferFilterBuilder
     /**
      * Get the filters array.
      *
-     * @return array Filters array
+     * @return array<string, mixed> Filters array
      */
     public function getFiltersArray(): array
     {

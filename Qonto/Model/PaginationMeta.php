@@ -4,15 +4,15 @@ namespace neyric\Qonto\Model;
 
 class PaginationMeta
 {
-    public $current_page;
+    public int $current_page;
 
-    public $next_page;
+    public ?int $next_page;
 
-    public $prev_page;
+    public ?int $prev_page;
 
-    public $total_pages;
+    public int $total_pages;
 
-    public $total_count;
+    public int $total_count;
 
-    public $per_page;
+    public int $per_page;
 }

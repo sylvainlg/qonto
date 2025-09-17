@@ -11,7 +11,7 @@ set_time_limit(0);
 class QontoApiTest extends TestCase
 {
 
-    function test_QontoApiConstruct()
+    function test_QontoApiConstruct(): void
     {
         $client = new QontoApi('login', 'secretKey');
 

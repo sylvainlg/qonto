@@ -4,10 +4,10 @@ namespace neyric\Qonto\Model;
 
 class Organization
 {
-    public $slug;
+    public string $slug;
 
     /**
      * @var BankAccount[]
      */
-    public $bank_accounts;
+    public array $bank_accounts;
 }

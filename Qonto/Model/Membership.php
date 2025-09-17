@@ -4,9 +4,9 @@ namespace neyric\Qonto\Model;
 
 class Membership
 {
-    public $id;
+    public string $id;
 
-    public $first_name;
+    public string $first_name;
 
-    public $last_name;
+    public string $last_name;
 }
