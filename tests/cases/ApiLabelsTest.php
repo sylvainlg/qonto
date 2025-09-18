@@ -19,24 +19,25 @@ class ApiLabelsTest extends TestCase
         $qonto = new QontoApi('login', 'secretKey');
 
         // Setup a MockHttpClient for the api client
-        $responses = [
-            new MockResponse(json_encode([
-                'labels' => [
-                    [
-                        'id' => 'some-random-uuid',
-                        'name' => 'Test Label',
-                        'parent_id' => null,
-                    ]
-                ],
-                'meta' => [
-                    'current_page' => 1,
-                    'next_page' => null,
-                    'prev_page' => null,
-                    'total_pages' => 1,
-                    'total_count' => 1,
-                    'per_page' => 100,
+        $jsonData = [
+            'labels' => [
+                [
+                    'id' => 'some-random-uuid',
+                    'name' => 'Test Label',
+                    'parent_id' => null,
                 ]
-            ])),
+            ],
+            'meta' => [
+                'current_page' => 1,
+                'next_page' => null,
+                'prev_page' => null,
+                'total_pages' => 1,
+                'total_count' => 1,
+                'per_page' => 100,
+            ]
+        ];
+        $responses = [
+            new MockResponse((string) json_encode($jsonData)),
         ];
         $qonto->client->httpClient = new MockHttpClient($responses);
         

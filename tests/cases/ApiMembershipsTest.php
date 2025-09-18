@@ -19,24 +19,25 @@ class ApiMembershipsTest extends TestCase
         $qonto = new QontoApi('login', 'secretKey');
 
         // Setup a MockHttpClient for the api client
-        $responses = [
-            new MockResponse(json_encode([
-                'memberships' => [
-                    [
-                        'id' => '13e6b02e-a0c8-4f25-8fd2-20bd9f80ac43',
-                        'first_name' => 'John',
-                        'last_name' => 'Doe',
-                    ]
-                ],
-                'meta' => [
-                    'current_page' => 1,
-                    'next_page' => null,
-                    'prev_page' => null,
-                    'total_pages' => 1,
-                    'total_count' => 1,
-                    'per_page' => 100,
+        $jsonData = [
+            'memberships' => [
+                [
+                    'id' => '13e6b02e-a0c8-4f25-8fd2-20bd9f80ac43',
+                    'first_name' => 'John',
+                    'last_name' => 'Doe',
                 ]
-            ])),
+            ],
+            'meta' => [
+                'current_page' => 1,
+                'next_page' => null,
+                'prev_page' => null,
+                'total_pages' => 1,
+                'total_count' => 1,
+                'per_page' => 100,
+            ]
+        ];
+        $responses = [
+            new MockResponse((string) json_encode($jsonData)),
         ];
         $qonto->client->httpClient = new MockHttpClient($responses);
         

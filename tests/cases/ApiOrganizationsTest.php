@@ -19,24 +19,25 @@ class ApiOrganizationsTest extends TestCase
         $qonto = new QontoApi('login', 'secretKey');
 
         // Setup a MockHttpClient for the api client
-        $responses = [
-            new MockResponse(json_encode([
-                'organization' => [
-                    'slug' => 'acme-corp-1111',
-                    'bank_accounts' => [
-                        [
-                            'slug' => 'acme-corp-1111-bank-account-1',
-                            'iban' => 'FR76XXXXXXXXXXXXXXXXXXXXXXX',
-                            'bic' => 'QNTOFRP1XXX',
-                            'currency' => 'EUR',
-                            'balance' => 72130.64,
-                            'balance_cents' => 7213064,
-                            'authorized_balance' => 72130.64,
-                            'authorized_balance_cents' => 7213064,
-                        ]
+        $jsonData = [
+            'organization' => [
+                'slug' => 'acme-corp-1111',
+                'bank_accounts' => [
+                    [
+                        'slug' => 'acme-corp-1111-bank-account-1',
+                        'iban' => 'FR123456789',
+                        'bic' => 'QNTOFRP1XXX',
+                        'currency' => 'EUR',
+                        'balance' => 72130.64,
+                        'balance_cents' => 7213064,
+                        'authorized_balance' => 2134.12,
+                        'authorized_balance_cents' => 213412,
                     ]
                 ]
-            ])),
+            ]
+        ];
+        $responses = [
+            new MockResponse((string) json_encode($jsonData)),
         ];
         $qonto->client->httpClient = new MockHttpClient($responses);
         

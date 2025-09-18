@@ -9,17 +9,16 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class ApiClient
 {
-    private string $baseUrl;
-
     public HttpClientInterface $httpClient; // public to be easily overriden in tests
 
     /**
      * ApiClient constructor
      */
-    public function __construct(string $login, string $secretKey, string $baseUrl)
-    {
-        $this->baseUrl = $baseUrl;
-
+    public function __construct(
+        string $login,
+        string $secretKey,
+        private string $baseUrl
+    ) {
         $this->httpClient = HttpClient::create([
             'headers' => [
                 'Authorization' => self::getAuthorizationValue($login, $secretKey),
@@ -30,6 +29,9 @@ class ApiClient
     }
 
 
+    /**
+     * @param array<string, mixed> $queryParameters
+     */
     public function getRequest(string $url, array $queryParameters = []): ResponseInterface
     {
         return $this->httpClient->request('GET', $url, [
@@ -37,7 +39,7 @@ class ApiClient
         ]);
     }
 
-    public function getRequestPOST(string $url, array $body_parameters): ResponseInterface{
+    public function getRequestPOST(string $url, mixed $body_parameters): ResponseInterface{
         return $this->httpClient->request('POST', $url, [
             'body' => $body_parameters
         ]);

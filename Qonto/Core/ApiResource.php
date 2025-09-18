@@ -10,16 +10,10 @@ use neyric\Qonto\QontoApi;
 abstract class ApiResource
 {
     /**
-     * @var QontoApi
-     */
-    protected $api;
-
-    /**
      * @param QontoApi $api
      */
-    public function __construct($api)
+    public function __construct(protected QontoApi $api)
     {
-        $this->api = $api;
     }
 
     /**
