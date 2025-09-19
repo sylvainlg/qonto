@@ -19,17 +19,18 @@ class ApiAttachementsTest extends TestCase
         $qonto = new QontoApi('login', 'secretKey');
 
         // Setup a MockHttpClient for the api client
+        $jsonData = [
+            "attachment" => [
+                "id" => "ad3234b4-2529-36ee-b5b9-d0883271f079",
+                "created_at" => "2019-08-27T12:04:31.029Z",
+                "file_name" => "Somefilename.pdf",
+                "file_size" => "56608",
+                "file_content_type" => "application/pdf",
+                "url" => "https://qonto.s3.eu-central-1.amazonaws.com/production/uploads/attachment/somefileid?with=s3token"
+            ]
+        ];
         $responses = [
-            new MockResponse(json_encode([
-                "attachment" => [
-                    "id" => "ad3234b4-2529-36ee-b5b9-d0883271f079",
-                    "created_at" => "2019-08-27T12:04:31.029Z",
-                    "file_name" => "Somefilename.pdf",
-                    "file_size" => "56608",
-                    "file_content_type" => "application/pdf",
-                    "url" => "https://qonto.s3.eu-central-1.amazonaws.com/production/uploads/attachment/somefileid?with=s3token"
-                ]
-            ])),
+            new MockResponse((string) json_encode($jsonData)),
         ];
         $qonto->client->httpClient = new MockHttpClient($responses);
         

@@ -1,0 +1,19 @@
+parameters:
+    level: 7
+    paths:
+        - Qonto
+        - tests
+    
+    # Ignore some test-related issues that are not actual problems
+    ignoreErrors:
+        # PHPUnit assertions with typed returns are always true (this is expected)
+        - '#Call to method PHPUnit\\Framework\\Assert::assertNotNull\(\) with .+ will always evaluate to true#'
+        
+        # The $baseUrl property is intentionally write-only (used for construction)
+        - '#Property .+::\$baseUrl is never read, only written#'
+        
+    # Treat PHPDoc types as less certain to reduce false positives in tests
+    treatPhpDocTypesAsCertain: false
+    
+    # Enable more detailed error reporting
+    reportUnmatchedIgnoredErrors: true

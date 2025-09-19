@@ -71,12 +71,12 @@ class ExternalTransferBuilder
     }
 
     /**
-     * @param string $beneficaryId
+     * @param string $beneficiaryId
      * @return ExternalTransferBuilder
      */
-    public function beneficaryId(string $beneficaryId): ExternalTransferBuilder
+    public function beneficiaryId(string $beneficiaryId): ExternalTransferBuilder
     {
-        $this->beneficiary_id = $beneficaryId;
+        $this->beneficiary_id = $beneficiaryId;
         return $this;
     }
 

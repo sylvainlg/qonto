@@ -38,22 +38,18 @@ class ExternalTransferFilterBuilder
     {
         if(!in_array($status, ["pending", "processing", "canceled", "declined", "settled"])) throw new \Exception("Status must be (pending, processing, canceled, declined, settled)");
 
-        array_push($this->filters, [
-            "status" => $status
-        ]);
+        $this->filters["status"] = $status;
 
         return $this;
     }
 
     /**
      * Add attachment to the transactions list
-     * @param string[] $beneficacy_ids
+     * @param string[] $beneficiary_ids
      */
-    public function beneficary(array $beneficacy_ids): ExternalTransferFilterBuilder
+    public function beneficiary(array $beneficiary_ids): ExternalTransferFilterBuilder
     {
-        array_push($this->filters, [
-            "beneficacy_ids" => $beneficacy_ids
-        ]);
+        $this->filters["beneficiary_ids"] = $beneficiary_ids;
 
         return $this;
     }
@@ -68,9 +64,7 @@ class ExternalTransferFilterBuilder
     {
         if(!DateUtils::assertISO8601Date($date)) throw new \Exception("The date must be formated in ISO8601 format !");
 
-        array_push($this->filters, [
-            "updated_at_from" => $date
-        ]);
+        $this->filters["updated_at_from"] = $date;
 
         return $this;
     }
@@ -85,9 +79,7 @@ class ExternalTransferFilterBuilder
     {
         if(!DateUtils::assertISO8601Date($date)) throw new \Exception("The date must be formated in ISO8601 format !");
 
-        array_push($this->filters, [
-            "updated_at_to" => $date
-        ]);
+        $this->filters["updated_at_to"] = $date;
 
         return $this;
     }
@@ -99,9 +91,7 @@ class ExternalTransferFilterBuilder
      */
     public function scheduledAtFrom(string $date): ExternalTransferFilterBuilder
     {
-        array_push($this->filters, [
-            "scheduled_date_from" => $date
-        ]);
+        $this->filters["scheduled_date_from"] = $date;
 
         return $this;
     }
@@ -113,9 +103,7 @@ class ExternalTransferFilterBuilder
      */
     public function scheduledAtTo(string $date): ExternalTransferFilterBuilder
     {
-        array_push($this->filters, [
-            "scheduled_date_to" => $date
-        ]);
+        $this->filters["scheduled_date_to"] = $date;
 
         return $this;
     }

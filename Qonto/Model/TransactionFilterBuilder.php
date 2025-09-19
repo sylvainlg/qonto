@@ -38,9 +38,7 @@ class TransactionFilterBuilder
     {
         if(!in_array($status, ["pending", "reversed", "declined", "completed"])) throw new \Exception("Status must be (pending, reversed, declined, completed)");
 
-        array_push($this->filters, [
-            "status" => $status
-        ]);
+        $this->filters["status"] = $status;
 
         return $this;
     }
@@ -56,9 +54,7 @@ class TransactionFilterBuilder
     {
         if(!in_array($side, ["debit", "credit"])) throw new \Exception("Side must be (debit, credit)");
 
-        array_push($this->filters, [
-            "side" => $side
-        ]);
+        $this->filters["side"] = $side;
 
         return $this;
     }
@@ -68,9 +64,7 @@ class TransactionFilterBuilder
      */
     public function attachments(): TransactionFilterBuilder
     {
-        array_push($this->filters, [
-            "with_attachments" => true
-        ]);
+        $this->filters["with_attachments"] = true;
 
         return $this;
     }
@@ -85,9 +79,7 @@ class TransactionFilterBuilder
     {
         if(!DateUtils::assertISO8601Date($date)) throw new \Exception("The date must be formated in ISO8601 format !");
 
-        array_push($this->filters, [
-            "updated_at_from" => $date
-        ]);
+        $this->filters["updated_at_from"] = $date;
 
         return $this;
     }
@@ -102,9 +94,7 @@ class TransactionFilterBuilder
     {
         if(!DateUtils::assertISO8601Date($date)) throw new \Exception("The date must be formated in ISO8601 format !");
 
-        array_push($this->filters, [
-            "updated_at_to" => $date
-        ]);
+        $this->filters["updated_at_to"] = $date;
 
         return $this;
     }
@@ -119,9 +109,7 @@ class TransactionFilterBuilder
     {
         if(!DateUtils::assertISO8601Date($date)) throw new \Exception("The date must be formated in ISO8601 format !");
 
-        array_push($this->filters, [
-            "settled_at_from" => $date
-        ]);
+        $this->filters["settled_at_from"] = $date;
 
         return $this;
     }
@@ -136,9 +124,7 @@ class TransactionFilterBuilder
     {
         if(!DateUtils::assertISO8601Date($date)) throw new \Exception("The date must be formated in ISO8601 format !");
 
-        array_push($this->filters, [
-            "settled_at_to" => $date
-        ]);
+        $this->filters["settled_at_to"] = $date;
 
         return $this;
     }

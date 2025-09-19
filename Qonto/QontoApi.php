@@ -14,12 +14,6 @@ use neyric\Qonto\ApiResource\ApiTransactions;
 
 class QontoApi
 {
-    public string $login;
-
-    public string $secretKey;
-
-    public string $baseUrl;
-
     /**
      * @var ApiClient
      */
@@ -61,14 +55,14 @@ class QontoApi
     public ApiExternalTransfers $ExternalTransers;
 
 
-    public function __construct(string $login, string $secretKey, string $baseUrl = 'https://thirdparty.qonto.com/v2') {
-        $this->login  = $login;
-        $this->secretKey = $secretKey;
-        $this->baseUrl = $baseUrl;
-
+    public function __construct(
+        public string $login,
+        public string $secretKey,
+        public string $baseUrl = 'https://thirdparty.qonto.com/v2'
+    ) {
         // utils for ApiResource (hosted on main Api object so they 
         // are instantiated only once, and not once per resource)
-        $this->client = new ApiClient($login, $secretKey, $baseUrl);
+        $this->client = new ApiClient($this->login, $this->secretKey, $this->baseUrl);
         $this->serializer = new ApiSerializer();
 
         // Api resources
